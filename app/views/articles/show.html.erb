@@ -1,0 +1,40 @@
+<h1><%= @article.title %></h1>
+
+<p><%= @article.body %></p>
+
+<ul>
+  <li><%= link_to "Edit", edit_article_path(@article) %></li>
+  <li><%= link_to "Destroy", article_path(@article), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></li>
+</ul>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h2>Add a comment:</h2>
+<%= render 'comments/form' %>
+<!-- app/views/articles/show.html.erb -->
+<h1><%= @article.title %></h1>
+<p><%= @article.body %></p>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+
+<h3>Add a comment:</h3>
+<%= render 'comments/form', article: @article %>
+<!-- app/views/articles/show.html.erb -->
+<h1><%= @article.title %></h1>
+
+<p><%= @article.content %></p>
+
+<h2>Authors:</h2>
+<ul>
+  <% @article.authors.each do |author| %>
+    <li><%= author.name %></li>
+  <% end %>
+</ul>
+<!-- some code above -->
+<%= render partial: 'comments/form', locals: { article: @article } %>
+<!-- some code below -->

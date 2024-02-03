@@ -1,0 +1,14 @@
+<!-- app/views/albums/show.html.erb -->
+<h1><%= @album.title %></h1>
+
+<h2>Artist</h2>
+<p><%= @album.artist.name %></p>
+
+<h2>Songs</h2>
+<ul>
+  <% @album.songs.each do |song| %>
+    <li><%= link_to 'Song', song %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', albums_path %>
